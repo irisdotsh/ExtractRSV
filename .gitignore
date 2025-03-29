@@ -1,5 +1,6 @@
 bin/
 obj/
 publish/
+Properties/
 .vs/
 *.csproj.user

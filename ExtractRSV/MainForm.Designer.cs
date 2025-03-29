@@ -28,19 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             gbLogConfig = new GroupBox();
             btnBrowseLog = new Button();
             lblLogFile = new Label();
             tbLog = new TextBox();
             gbRSVViewer = new GroupBox();
             lvRSVPairs = new ListView();
+            Key = new ColumnHeader();
+            Value = new ColumnHeader();
             btnSave = new Button();
             ofdLog = new OpenFileDialog();
             sfdRSVs = new SaveFileDialog();
-            Key = new ColumnHeader();
-            Value = new ColumnHeader();
+            cmsListView = new ContextMenuStrip(components);
+            copyToolStripMenuItem = new ToolStripMenuItem();
             gbLogConfig.SuspendLayout();
             gbRSVViewer.SuspendLayout();
+            cmsListView.SuspendLayout();
             SuspendLayout();
             // 
             // gbLogConfig
@@ -102,6 +106,17 @@
             lvRSVPairs.TabIndex = 0;
             lvRSVPairs.UseCompatibleStateImageBehavior = false;
             lvRSVPairs.View = View.Details;
+            lvRSVPairs.MouseClick += lvRSVPairs_MouseClick;
+            // 
+            // Key
+            // 
+            Key.Text = "Key";
+            Key.Width = 200;
+            // 
+            // Value
+            // 
+            Value.Text = "Value";
+            Value.Width = 400;
             // 
             // btnSave
             // 
@@ -121,15 +136,18 @@
             // 
             sfdRSVs.Filter = "JSON files|*.json|All files|*.*";
             // 
-            // Key
+            // cmsListView
             // 
-            Key.Text = "Key";
-            Key.Width = 200;
+            cmsListView.Items.AddRange(new ToolStripItem[] { copyToolStripMenuItem });
+            cmsListView.Name = "cmsListView";
+            cmsListView.Size = new Size(181, 48);
             // 
-            // Value
+            // copyToolStripMenuItem
             // 
-            Value.Text = "Value";
-            Value.Width = 400;
+            copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            copyToolStripMenuItem.Size = new Size(180, 22);
+            copyToolStripMenuItem.Text = "Copy";
+            copyToolStripMenuItem.Click += copyToolStripMenuItem_Click;
             // 
             // MainForm
             // 
@@ -145,6 +163,7 @@
             gbLogConfig.ResumeLayout(false);
             gbLogConfig.PerformLayout();
             gbRSVViewer.ResumeLayout(false);
+            cmsListView.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -161,5 +180,7 @@
         private ListView lvRSVPairs;
         private ColumnHeader Key;
         private ColumnHeader Value;
+        private ContextMenuStrip cmsListView;
+        private ToolStripMenuItem copyToolStripMenuItem;
     }
 }
